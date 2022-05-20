@@ -1,7 +1,7 @@
 import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 
-export default function index() {
+export default function Index({ navigation }) {
     return (
         <View style={styles.container} >
             <ScrollView>
@@ -12,12 +12,12 @@ export default function index() {
                     <Text style={styles.logoText}>QuCu</Text>
                 </View>
                 <View style={styles.startBtnContainer}>
-                    <TouchableOpacity style={styles.startBtn}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Steps")} style={styles.startBtn}>
                         <Text style={styles.startBtnText}>Start</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.loginTextContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                         <Text style={styles.loginText}>Log In</Text>
                     </TouchableOpacity>
                 </View>

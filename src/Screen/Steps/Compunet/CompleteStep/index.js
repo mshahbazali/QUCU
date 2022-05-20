@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-
-export default function index({ ...props }) {
+export default function Index({ ...props }) {
     return (
         <View style={styles.container}>
             <TouchableOpacity {...props} style={styles.btn}>

@@ -2,13 +2,13 @@ import { View, Image, Text, StyleSheet, Button, TouchableOpacity, ScrollView } f
 import React from 'react'
 import Onboarding from 'react-native-onboarding-swiper';
 import { NextBtn, ProgressCircle, SkipBtn, CompleteStep } from './Compunet'
-export default function index() {
+export default function Index({ navigation }) {
     return (
         <View style={{ flex: 1 }}>
             <ScrollView>
                 <Onboarding
-                    onSkip={() => { console.log("OK"); }}
-                    onDone={() => { console.log("OK"); }}
+                    onSkip={() => { navigation.navigate("AuthNavigation") }}
+                    onDone={() => { navigation.navigate("AuthNavigation") }}
                     DotComponent={ProgressCircle}
                     NextButtonComponent={NextBtn}
                     DoneButtonComponent={CompleteStep}
