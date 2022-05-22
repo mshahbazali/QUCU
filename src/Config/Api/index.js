@@ -1,3 +1,3 @@
-const api = "http://192.168.10.4:8000/api"
+const api = "https://qucuapplication.herokuapp.com/api"
 
 export { api }
