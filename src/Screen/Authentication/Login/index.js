@@ -4,6 +4,7 @@ import { api } from '../../../Config/Api';
 import axios from 'axios';
 import { AntDesign } from '@expo/vector-icons';
 import Toast from 'react-native-root-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Index({ navigation }) {
   const [identifierInput, setIdentifierInput] = useState(false)
@@ -13,7 +14,6 @@ export default function Index({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [identifierError, setIdentifierError] = useState(undefined)
   const [passwordError, setPasswordError] = useState();
-  const [responseMessage, setResponseMessage] = useState();
 
   const loginUser = () => {
     const userData = {
@@ -21,9 +21,10 @@ export default function Index({ navigation }) {
       password: password
     }
     axios.post(`${api}/auth/login/`, userData)
-      .then(function (response) {
-        console.log(response.data.message);
+      .then(async (response) => {
         if (response.data.token) {
+          const token = JSON.stringify({ token: response.data.token })
+          await AsyncStorage.setItem('token', token)
           let toast = Toast.show(`Your account successfully logged`, {
             duration: Toast.durations.LONG,
             position: Toast.positions.TOP,
@@ -35,6 +36,7 @@ export default function Index({ navigation }) {
           setTimeout(function () {
             Toast.hide(toast);
           }, 10000);
+          navigation.navigate("Bottom")
         }
         else {
           let toast = Toast.show(`Please enter valid login detail`, {
@@ -49,7 +51,6 @@ export default function Index({ navigation }) {
             Toast.hide(toast);
           }, 10000);
         }
-        setResponseMessage(response.data.message)
       })
       .catch(function (error) {
 

@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { api } from '../../../Config/Api';
 import axios from 'axios';
 import Toast from 'react-native-root-toast';
-
+import { useSelector, useDispatch } from 'react-redux';
 export default function Index({ navigation }) {
     const [focusInputOne, setFocusInputOne] = useState(false)
     const [focusInputTwo, setsetFocusInputTwoFocus] = useState(false)
@@ -32,8 +32,8 @@ export default function Index({ navigation }) {
     const [phoneError, setPhoneError] = useState()
     const [passwordError, setPasswordError] = useState()
     const [confirmPasswordError, setConfirmPasswordError] = useState()
-    const [countryCode, setCountryCode] = useState()
-    const [validEmail, setValidEmail] = useState()
+    const state = useSelector(state => state)
+    const [validEmail, setValidEmail] = useState();
     const EmailValidate = (text) => {
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
         setValidEmail(reg.test(text))
@@ -41,7 +41,6 @@ export default function Index({ navigation }) {
             setEmail(text)
         }
     };
-
     const registerUser = () => {
         const userData = {
             firstName: firstName,
@@ -51,10 +50,10 @@ export default function Index({ navigation }) {
             phoneNumber: phoneNumber,
             password: password
         }
-
+        state.RegisterMobileNumber = phoneNumber
         axios.post(`${api}/auth/register`, userData)
             .then(function (response) {
-                console.log(response.data.message);
+                state.UserId = response.data?.user?._id
                 if (response.data.message === 'Your phone number is already registered') {
                     let toast = Toast.show(`${response.data.message}`, {
                         duration: Toast.durations.LONG,
@@ -75,19 +74,8 @@ export default function Index({ navigation }) {
 
             })
             .catch(function (error) {
-                console.log(error);
             });
     }
-    // console.log({
-    //     firstName,
-    //     lastName,
-    //     userName,
-    //     email,
-    //     phoneNumber,
-    //     password,
-    //     confirmPassword,
-    //     checked
-    // });
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -167,7 +155,7 @@ export default function Index({ navigation }) {
                             containerStyle={{ marginTop: -5, borderBottomColor: phoneError !== undefined ? "red" : focusInputFive == false ? "#323232" : "#175676", borderBottomWidth: 2, color: "#fff", fontWeight: "600", width: '100%', fontSize: 15, backgroundColor: "#141927" }}
                             textContainerStyle={{ color: "#fff", fontWeight: "600", fontSize: 15, backgroundColor: "#141927" }}
                             textInputStyle={{ color: "#fff", fontWeight: "600", fontSize: 15, backgroundColor: "#141927" }}
-                            codeTextStyle={{ color: "#2D344B", fontWeight: "600", fontSize: 15, backgroundColor: "#141927" }}
+                            codeTextStyle={{ color: phoneNumber == undefined ? "#2D344B" : "#fff", fontWeight: "600", fontSize: 15, backgroundColor: "#141927" }}
                         />
                         <Text style={{ color: "red", marginTop: 5, display: phoneError == undefined ? "none" : "flex" }}>Please Enter Phone Number</Text>
                     </View>
