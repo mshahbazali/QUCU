@@ -7,7 +7,7 @@ import Notification from '../../../Screen//Notification'
 import Products from '../../../Screen//Products'
 import Profile from '../../../Screen//Profile'
 import QRScanner from '../../../Screen//QRScanner'
-import Stack from '../Stack'
+import HomeNavigation from '../HomeNavigation'
 export default function Index() {
     const Tab = createBottomTabNavigator();
     const MainBtn = ({ children, onPress }) => {
@@ -63,7 +63,7 @@ export default function Index() {
                     ),
                     headerShown: false
                 }}
-                name="Home" component={Home} />
+                name="HomeNavigation" component={HomeNavigation} />
             <Tab.Screen
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -75,7 +75,7 @@ export default function Index() {
                     headerShown: false
                 }}
                 name="Products" component={Products} />
-            <Tab.Screen name="Stack" component={Home}
+            <Tab.Screen name="QRScanner" component={QRScanner}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <AntDesign name="qrcode" size={45} color="black" />),

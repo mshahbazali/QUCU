@@ -7,6 +7,7 @@ import Steps from '../../../Screen/Steps'
 import AuthNavigation from '../../AuthNavigation'
 import { Login, ForgotPassword, ResetPasswordVerification, ResetPassword } from '../../../Screen/Authentication'
 import Bottom from '../Bottom'
+import SubCategory from '../../../Screen/SubCategory'
 export default function Index() {
     const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function Index() {
             <Stack.Screen options={{ headerShown: false }} name="ResetPasswordVerification" component={ResetPasswordVerification} />
             <Stack.Screen options={{ headerShown: false }} name="ResetPassword" component={ResetPassword} />
             <Stack.Screen options={{ headerShown: false }} name="Bottom" component={Bottom} />
+            <Stack.Screen options={{ headerShown: false }} name="SubCategory" component={SubCategory} />
         </Stack.Navigator>
     )
 }

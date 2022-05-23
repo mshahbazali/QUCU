@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image 
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Index() {
+export default function Index({ navigation }) {
 
     const category = [
         {
@@ -70,7 +70,7 @@ export default function Index() {
                         <Ionicons name="md-menu" size={36} color="white" />
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', backgroundColor: "#21283F", marginTop: 13, marginBottom: 20, paddingVertical: 13, paddingHorizontal: 12, borderRadius: 10 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', backgroundColor: "#21283F", marginTop: 13, marginBottom: 20, paddingVertical: 10, paddingHorizontal: 12, borderRadius: 10 }}>
                     <View>
                         <Ionicons name="search" size={30} color="black" />
                     </View>
@@ -93,7 +93,7 @@ export default function Index() {
                                         {
                                             e.subCategory.map((e, i) => {
                                                 return (
-                                                    <TouchableOpacity key={i} style={{ width: 140, justifyContent: 'center', alignItems: 'center', marginHorizontal: 10 }}>
+                                                    <TouchableOpacity onPress={() => navigation.navigate("SubCategory")} key={i} style={{ width: 140, justifyContent: 'center', alignItems: 'center', marginHorizontal: 10 }}>
                                                         <View style={{ backgroundColor: "#175676", width: "100%", borderTopEndRadius: 20, borderTopStartRadius: 20 }}>
                                                             {e.icon}
                                                         </View>
