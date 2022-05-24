@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 export default function Index() {
   const notification = [
     {

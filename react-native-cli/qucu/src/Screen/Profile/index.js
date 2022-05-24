@@ -1,6 +1,12 @@
 import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { FontAwesome5, MaterialIcons, AntDesign, MaterialCommunityIcons, Octicons, Ionicons, Feather } from '@expo/vector-icons';
+import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/dist/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import Octicons from 'react-native-vector-icons/dist/Octicons';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import Feather from 'react-native-vector-icons/dist/Feather';
 export default function Index() {
   return (
     <View style={styles.container}>

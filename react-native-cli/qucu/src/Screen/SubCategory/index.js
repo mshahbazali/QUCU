@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { Ionicons, SimpleLineIcons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import SimpleLineIcons from 'react-native-vector-icons/dist/SimpleLineIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 export default function Index() {
-
 
     const arr = ["Todos", "Tacos", "Tacos", "Tacos"]
 
